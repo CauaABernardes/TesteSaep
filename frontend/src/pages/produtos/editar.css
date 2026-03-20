@@ -1,0 +1,147 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #020617;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-right: 1px solid #1e293b;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background: transparent;
+  border: none;
+  color: #cbd5f5;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar button:hover {
+  background: #1e293b;
+}
+.sidebar .logout:hover {
+  background: #eb6767;
+}
+
+.sidebar .logout {
+  margin-top: auto;
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.topbar h1 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #0f172a;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field.full {
+  grid-column: span 2;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #f1f5f9;
+  outline: none;
+  transition: 0.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.field textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btnSalvar {
+  flex: 1;
+  background: #22c55e;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnSalvar:hover {
+  background: #16a34a;
+  transform: scale(1.03);
+}
+
+.btnVoltar {
+  flex: 1;
+  background: #64748b;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnVoltar:hover {
+  background: #475569;
+  transform: scale(1.03);
+}
+
+.center {
+  text-align: center;
+  margin-top: 40px;
+}

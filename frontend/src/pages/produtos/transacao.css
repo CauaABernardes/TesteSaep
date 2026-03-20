@@ -1,0 +1,145 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #020617;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-right: 1px solid #1e293b;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background: transparent;
+  border: none;
+  color: #cbd5f5;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar button:hover {
+  background: #1e293b;
+}
+
+.sidebar .logout:hover {
+  background: #eb6767;
+}
+
+.sidebar .logout {
+  margin-top: auto;
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.topbar h1 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.filtroCard {
+  margin-bottom: 20px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  gap: 15px;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.field select,
+.field input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #f1f5f9;
+  outline: none;
+}
+
+.field select:focus,
+.field input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background: #020617;
+}
+
+.table th {
+  padding: 12px;
+  text-align: left;
+  color: #38bdf8;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.table tr:hover {
+  background: #1e293b;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 15px;
+  color: #94a3b8;
+}
+
+.center {
+  text-align: center;
+  margin-top: 40px;
+}
