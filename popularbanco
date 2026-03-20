@@ -1,0 +1,40 @@
+CREATE DATABASE saep;
+
+drop database saep;
+
+USE saep;
+
+INSERT INTO api_produto (nome, tipo, tensao, dimensoes, resolucao_tela, armazenamento, conectividade, descricao, estoque_minimo, estoque_atual, preco_unitario)
+VALUES ('Motorola Edge 40 Neo', 'SMARTPHONE', '127V-220V', '15.9x0.7cm', 'Full HD+', '256 GB','5G, Wi-Fi 6E, Bluetooth 5.3, NFC, USB-C', 'O Motorola Edge 40 Neo é um intermediário premium com foco em design (acabamento em couro vegano e cores Pantone), tela pOLED curva de 6,55" a 144Hz, e resistência a água IP68. Equipado com o processador MediaTek Dimensity 7030, 8GB/12GB de RAM, 256GB de armazenamento e câmera principal de 50MP com estabilização óptica (OIS), o aparelho traz carregamento rápido de 68W', 5, 7, 1800),
+	   ('Dell Notebook Inspiron 15', 'NOTEBOOK', '127V-220V', '35.8x23.5cm', 'Full HD', '256 GB - 1 TB', 'USB 3.2, USB 2.0, USB-C, HDMI, Wi-Fi 6, Bluetooth 5.3, Cartão SD (fone/microfone)', 'O Dell Inspiron 15 (série 3000/3530) é um notebook de entrada/intermediário focado em produtividade e custo-benefício. Geralmente equipado com processadores Intel Core de 13ª geração (i3, i5 ou i7), memória RAM de 8GB a 16GB DDR4/DDR5, SSDs rápidos de 256GB a 1TB, tela Full HD de 15,6" (alguns com 120Hz) e Windows 11', 4, 12, 2990.90),
+       ('Samsung Vision AI TV 55" QLED ULTRA 4K', 'SMART TV', '127V-220V','123.4x71.1cm', '4K Ultra HD', '8 GB', 'HDMI, USB-A, Saída de Áudio Digital, Antena RF, Ethernet LAN, Wi-Fi 5, Bluetooth 5.2', 'A Samsung Vision AI TV 55" QLED 4K (modelo QEF1/Q7F 2025) oferece imagens vibrantes com pontos quânticos, impulsionadas por IA para otimização de cor, contraste e som em tempo real. Destaca-se pelo design fino, Gaming Hub, controle SolarCell sem pilhas e recursos de Casa Inteligente (SmartThings), focando em alta performance visual', 3, 5, 2590.90),
+       ('Samsung Galaxy S23 FE', 'SMARTPHONE', '127V-220V', '15.8x7.6cm', 'Full HD+', '128 GB', '5G, Wi-Fi 6, Bluetooth 5.3, NFC, USB-C', 'O Galaxy S23 FE é um smartphone premium acessível com tela AMOLED de 6.4" 120Hz, processador Exynos 2200, câmeras versáteis e bateria durável.', 5, 10, 3499.90),
+	   ('iPhone 14', 'SMARTPHONE', '127V-220V', '14.7x7.1cm', 'Super Retina', '128 GB', '5G, Wi-Fi 6, Bluetooth 5.3, NFC, Lightning', 'O iPhone 14 oferece alto desempenho com chip A15 Bionic, câmera dupla avançada e tela OLED de alta qualidade.', 3, 6, 4999.90),
+	   ('Xiaomi Redmi Note 13', 'SMARTPHONE', '127V-220V', '16.1x7.5cm', 'Full HD+', '256 GB', '5G, Wi-Fi 5, Bluetooth 5.2, NFC, USB-C', 'O Redmi Note 13 traz excelente custo-benefício com tela AMOLED de 120Hz, bateria grande e câmera principal de alta resolução.', 6, 15, 1899.90),
+	   ('Lenovo IdeaPad 3', 'NOTEBOOK', '127V-220V', '35.9x23.6cm', 'Full HD', '512 GB', 'USB 3.0, USB-C, HDMI, Wi-Fi 5, Bluetooth 5.1', 'Notebook ideal para estudos e trabalho com processadores Ryzen ou Intel, SSD rápido e tela de 15.6 polegadas.', 4, 9, 2799.90),
+	   ('Acer Aspire 5', 'NOTEBOOK', '127V-220V', '36.3x23.8cm', 'Full HD', '512 GB', 'USB 3.2, USB-C, HDMI, Wi-Fi 6, Bluetooth 5.2', 'O Aspire 5 é um notebook equilibrado para produtividade com bom desempenho, teclado confortável e armazenamento SSD.', 3, 7, 3199.90),
+	   ('ASUS VivoBook 15', 'NOTEBOOK', '127V-220V', '35.7x23.0cm', 'Full HD', '256 GB', 'USB 3.2, USB-C, HDMI, Wi-Fi 6, Bluetooth 5.2', 'Notebook leve e moderno voltado para tarefas diárias, com tela NanoEdge e SSD rápido.', 4, 8, 2899.90),
+	   ('LG UHD AI TV 50"', 'SMART TV', '127V-220V', '112.1x65.1cm', '4K Ultra HD', '8 GB', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet', 'A LG UHD AI TV 50 polegadas entrega imagens em 4K com processamento inteligente e integração com assistentes virtuais.', 3, 6, 2399.90),
+	   ('TCL QLED TV 55"', 'SMART TV', '127V-220V', '123.0x71.0cm', '4K Ultra HD', '16 GB', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet', 'Smart TV QLED com cores vibrantes, suporte a HDR e sistema Google TV para streaming e apps.', 3, 5, 2699.90),
+	   ('Philips Ambilight 50"', 'SMART TV', '127V-220V', '111.8x64.5cm', '4K Ultra HD', '8 GB', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet', 'TV com tecnologia Ambilight que projeta luzes nas bordas da tela para uma experiência imersiva.', 2, 4, 2499.90);
+       
+INSERT INTO auth_user (username, password, email, first_name, last_name, is_superuser, is_staff, is_active, date_joined)
+VALUES ('joao', '12345', 'joao@email.com', 'João', 'Silva', 0, 0, 1, NOW()),
+	   ('maria', '12345', 'maria@email.com', 'Maria', 'Oliveira', 0, 0, 1, NOW()),
+	   ('carlos', '12345', 'carlos@email.com', 'Carlos', 'Santos', 0, 0, 1, NOW());     
+
+INSERT INTO api_usuario (nome, email, usuario_id)
+VALUES ('João Silva', 'joao@email.com', 1),
+	   ('Maria Oliveira', 'maria@email.com', 2),
+	   ('Carlos Santos', 'carlos@email.com', 3);      
+       
+INSERT INTO api_transacao (data_transacao, tipo_transacao, quantidade, id_produto_id, id_usuario_id)
+VALUES ('2025-03-01 10:30:00', 'ENTRADA', 5, 1, 1),
+	   ('2025-03-02 15:20:00', 'RETIRADA', 2, 1, 2),
+	   ('2025-03-05 09:00:00', 'ENTRADA', 10, 2, 1),
+	   ('2025-03-06 11:45:00', 'RETIRADA', 1, 3, 3),
+	   ('2025-03-08 16:10:00', 'ENTRADA', 3, 2, 2);  
+
+SELECT * FROM api_produto;
+SELECT * FROM api_usuario;
+SELECT * FROM api_transacao;
