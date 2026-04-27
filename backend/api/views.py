@@ -56,6 +56,8 @@ class UsuarioViewSet(ModelViewSet):
     filterset_class = UsuarioFilter
 
     def get_queryset(self):        
+        if self.action == "list":
+            return Usuario.objects.all()
         return Usuario.objects.filter(usuario=self.request.user)
     
     def get_serializer_class(self):
@@ -70,6 +72,8 @@ class UsuarioViewSet(ModelViewSet):
             raise PermissionDenied("Você não pode acessar esse usuário")
         
         return obj
+    
+    
 
     @action(
         detail=False,

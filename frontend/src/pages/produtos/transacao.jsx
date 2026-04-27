@@ -10,10 +10,12 @@ export default function Transacao() {
   const [transacoes, setTransacoes] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [usuarios, setUsuarios] = useState([]);
 
   const [filtro, setFiltro] = useState({
     tipo_transacao: "",
     id_produto: "",
+    id_usuario: "",
     data_inicio: "",
     data_fim: ""
   });
@@ -41,6 +43,9 @@ export default function Transacao() {
       if (filtro.id_produto)
         url += `id_produto=${filtro.id_produto}&`;
 
+      if (filtro.id_usuario)
+        url += `id_usuario=${filtro.id_usuario}&`;
+
       if (filtro.data_inicio)
         url += `data_inicio=${filtro.data_inicio}T00:00:00&`;
 
@@ -62,8 +67,20 @@ export default function Transacao() {
     }
   };
 
+  const fetchUsuarios = async () => {
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/api/usuarios/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUsuarios(res.data);
+    } catch {
+      alert("Erro ao carregar usuários");
+    }
+  };
+
   useEffect(() => {
     fetchProdutos();
+    fetchUsuarios();
     fetchTransacoes(); // carrega tudo ao abrir
   }, []);
 
@@ -133,6 +150,22 @@ export default function Transacao() {
                 {produtos.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.nome}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="field">
+              <label>Usuário</label>
+              <select
+                name="id_usuario"
+                value={filtro.id_usuario}
+                onChange={handleFiltro}
+              >
+                <option value="">Todos</option>
+                {usuarios.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.nome}
                   </option>
                 ))}
               </select>

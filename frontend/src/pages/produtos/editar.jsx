@@ -85,7 +85,7 @@ export default function EditarProduto() {
         <button onClick={() => navigate("/produtos/")}>
           + Novo Produto
         </button>
-        <button onClick={() => navigate("/produtos/transacao")}>Histótico de Transações</button>
+        <button onClick={() => navigate("/produtos/transacao")}>Histórico de Transações</button>
         <button onClick={() => navigate("/produtos/nova-transacao")}>Nova Transação</button>
 
         <button className="logout" onClick={() => navigate("/login")}>
@@ -102,7 +102,8 @@ export default function EditarProduto() {
         <div className="card">
           <form className="formGrid" onSubmit={salvar}>
 
-            <div className="field">
+            {/* BASICO */}
+            <div className="field full">
               <label>Nome</label>
               <input name="nome" value={form.nome} onChange={handleChange} />
             </div>
@@ -121,6 +122,7 @@ export default function EditarProduto() {
               <input name="tensao" value={form.tensao} onChange={handleChange} />
             </div>
 
+            {/* ESPECIFICAÇÕES */}
             <div className="field">
               <label>Dimensões</label>
               <input name="dimensoes" value={form.dimensoes} onChange={handleChange} />
@@ -141,11 +143,13 @@ export default function EditarProduto() {
               <input name="conectividade" value={form.conectividade} onChange={handleChange} />
             </div>
 
+            {/* DESCRIÇÃO */}
             <div className="field full">
               <label>Descrição</label>
               <textarea name="descricao" value={form.descricao} onChange={handleChange} />
             </div>
 
+            {/* ESTOQUE / PREÇO */}
             <div className="field">
               <label>Estoque Atual</label>
               <input type="number" name="estoque_atual" value={form.estoque_atual} onChange={handleChange} />
@@ -156,11 +160,12 @@ export default function EditarProduto() {
               <input type="number" name="estoque_minimo" value={form.estoque_minimo} onChange={handleChange} />
             </div>
 
-            <div className="field">
+            <div className="field full">
               <label>Preço</label>
               <input type="number" step="0.01" name="preco_unitario" value={form.preco_unitario} onChange={handleChange} />
             </div>
 
+            {/* BOTÕES */}
             <div className="actions full">
               <button type="submit" className="btnSalvar">💾 Salvar</button>
               <button type="button" className="btnVoltar" onClick={() => navigate("/home")}>
@@ -169,7 +174,7 @@ export default function EditarProduto() {
             </div>
 
           </form>
-        </div>
+                  </div>
       </main>
     </div>
   );

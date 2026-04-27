@@ -9,6 +9,10 @@ export default function Home() {
   const [erro, setErro] = useState("");
   const [tipoFiltro, setTipoFiltro] = useState("");
 
+  //PAGINAÇÃO
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const itensPorPagina = 10;
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -31,6 +35,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setPaginaAtual(1); // 🔥 reseta página ao filtrar
     fetchProdutos();
   }, [tipoFiltro]);
 
@@ -53,12 +58,16 @@ export default function Home() {
     navigate("/login");
   };
 
+  const indexUltimo = paginaAtual * itensPorPagina;
+  const indexPrimeiro = indexUltimo - itensPorPagina;
+  const produtosPagina = produtos.slice(indexPrimeiro, indexUltimo);
+  const totalPaginas = Math.ceil(produtos.length / itensPorPagina);
+
   if (loading) return <p className="center">Carregando...</p>;
   if (erro) return <p className="center">{erro}</p>;
 
   return (
     <div className="layout">
-
       {/* SIDEBAR */}
       <aside className="sidebar">
         <h2>Sistema</h2>
@@ -67,8 +76,12 @@ export default function Home() {
         <button onClick={() => navigate("/produtos/novo")}>
           + Novo Produto
         </button>
-        <button onClick={() => navigate("/produtos/transacao")}>Histótico de Transações</button>
-        <button onClick={() => navigate("/produtos/nova-transacao")}>Nova Transação</button>
+        <button onClick={() => navigate("/produtos/transacao")}>
+          Histórico de Transações
+        </button>
+        <button onClick={() => navigate("/produtos/nova-transacao")}>
+          Nova Transação
+        </button>
 
         <button className="logout" onClick={logout}>
           🚪 Sair
@@ -82,14 +95,17 @@ export default function Home() {
           <div className="topbar">
             <h1>Produtos</h1>
 
-            {produtos.some(p => p.estoque_atual <= p.estoque_minimo) && (
+            {produtos.some(
+              (p) => p.estoque_atual <= p.estoque_minimo
+            ) && (
               <div className="alertaEstoque">
                 ⚠️ Atenção! Produtos com estoque baixo:
-
                 <ul>
                   {produtos
-                    .filter(p => p.estoque_atual <= p.estoque_minimo)
-                    .map(p => (
+                    .filter(
+                      (p) => p.estoque_atual <= p.estoque_minimo
+                    )
+                    .map((p) => (
                       <li key={p.id}>
                         {p.nome} ({p.estoque_atual} em estoque)
                       </li>
@@ -105,14 +121,17 @@ export default function Home() {
                 className="selectEdit"
               >
                 <option value="">Todos</option>
-                <option value="SMARTPHONE">Smartphone</option>
-                <option value="NOTEBOOK">Notebook</option>
-                <option value="SMART TV">Smart TV</option>
+                <option value="SMARTPHONE">Smartphones</option>
+                <option value="NOTEBOOK">Notebooks</option>
+                <option value="SMART TV">Smart TVs</option>
+                <option value="TABLET">Tablets</option>
+                <option value="KINDLE">Kindles</option>
+                <option value="PC">PCs</option>
               </select>
             </div>
           </div>
 
-          {/* CARD TABELA */}
+          {/* TABELA */}
           <div className="card">
             <table className="table">
               <thead>
@@ -126,7 +145,7 @@ export default function Home() {
               </thead>
 
               <tbody>
-                {produtos.map((produto) => {
+                {produtosPagina.map((produto) => {
                   const estoqueBaixo =
                     produto.estoque_atual <= produto.estoque_minimo;
 
@@ -138,7 +157,9 @@ export default function Home() {
                         R$ {Number(produto.preco_unitario).toFixed(2)}
                       </td>
 
-                      <td className={estoqueBaixo ? "estoqueBaixo" : ""}>
+                      <td
+                        className={estoqueBaixo ? "estoqueBaixo" : ""}
+                      >
                         {produto.estoque_atual}
                       </td>
 
@@ -149,7 +170,9 @@ export default function Home() {
                           <button
                             className="btnEditar"
                             onClick={() =>
-                              navigate(`/produtos/editar/${produto.id}`)
+                              navigate(
+                                `/produtos/editar/${produto.id}`
+                              )
                             }
                           >
                             ✏️
@@ -157,7 +180,9 @@ export default function Home() {
 
                           <button
                             className="btnExcluir"
-                            onClick={() => deletarProduto(produto.id)}
+                            onClick={() =>
+                              deletarProduto(produto.id)
+                            }
                           >
                             🗑️
                           </button>
@@ -172,6 +197,31 @@ export default function Home() {
             {produtos.length === 0 && (
               <p className="empty">Nenhum produto encontrado</p>
             )}
+
+            {/* PAGINAÇÃO */}
+            <div className="paginacao">
+              <button
+                disabled={paginaAtual === 1}
+                onClick={() =>
+                  setPaginaAtual(paginaAtual - 1)
+                }
+              >
+                ⬅️
+              </button>
+
+              <span>
+                Página {paginaAtual} de {totalPaginas || 1}
+              </span>
+
+              <button
+                disabled={paginaAtual === totalPaginas || totalPaginas === 0}
+                onClick={() =>
+                  setPaginaAtual(paginaAtual + 1)
+                }
+              >
+                ➡️
+              </button>
+            </div>
           </div>
         </div>
       </main>

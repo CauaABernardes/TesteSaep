@@ -7,8 +7,11 @@ class Produto(models.Model):
 
     TIPO_CHOICES = [
         ('SMARTPHONE', 'smartphone'),
-        ('NOTEBOOK', 'notebooks'),
-        ('SMART TV', 'smart tv')
+        ('NOTEBOOK', 'notebook'),
+        ('SMART TV', 'smart tv'),
+        ('TABLET', 'tablet'),
+        ('KINDLE', 'kindle'),
+        ('PC', 'pc'),
     ]
 
     nome = models.CharField(max_length = 100)

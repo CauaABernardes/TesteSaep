@@ -56,12 +56,14 @@
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .formGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
 }
 
 .field {
@@ -89,6 +91,7 @@
   color: #f1f5f9;
   outline: none;
   transition: 0.2s;
+  width: 100%;
 }
 
 .field input:focus,
@@ -105,8 +108,8 @@
 
 .actions {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .btnSalvar {

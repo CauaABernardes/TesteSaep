@@ -20,6 +20,8 @@ class TransacaoFilter(django_filters.FilterSet):
     tipo_transacao = django_filters.CharFilter(lookup_expr='exact')
     id_produto = django_filters.NumberFilter(field_name='id_produto')
 
+    id_usuario = django_filters.NumberFilter(field_name='id_usuario')
+
     data_inicio = django_filters.DateTimeFilter(
         field_name='data_transacao',
         lookup_expr='gte'
@@ -32,4 +34,4 @@ class TransacaoFilter(django_filters.FilterSet):
 
     class Meta:
         model = Transacao
-        fields = ['tipo_transacao', 'id_produto']
+        fields = ['tipo_transacao', 'id_produto', 'id_usuario']

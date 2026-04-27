@@ -64,7 +64,7 @@ export default function NovoProduto() {
         <button onClick={() => navigate("/produtos/novo")}>
           + Novo Produto
         </button>
-        <button onClick={() => navigate("/produtos/transacao")}>Histótico de Transações</button>
+        <button onClick={() => navigate("/produtos/transacao")}>Histórico de Transações</button>
         <button onClick={() => navigate("/produtos/nova-transacao")}>Nova Transação</button>
 
         <button className="logout" onClick={() => navigate("/login")}>
